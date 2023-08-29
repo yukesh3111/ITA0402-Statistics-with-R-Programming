@@ -1,0 +1,6 @@
+data("airquality")
+head(airquality)
+str(airquality)
+summary(airquality)
+correlation_matrix <- cor(airquality[, c("Ozone", "Solar.R", "Wind", "Temp")])
+print(correlation_matrix)

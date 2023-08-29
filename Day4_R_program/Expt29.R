@@ -1,0 +1,15 @@
+data("iris")
+dim(iris)
+str(iris)
+summary(iris)
+sapply(iris[, 1:4], sd)
+aggregate(iris[, 1:4], by = list(Species = iris$Species), FUN = function(x) c(mean = mean(x), sd = sd(x)))
+quantile(iris$Sepal.Width, probs = c(0.25, 0.5, 0.75))
+quantile(iris$Sepal.Length, probs = c(0.25, 0.5, 0.75))
+quantiles <- quantile(iris$Sepal.Length, probs = c(0, 0.25, 0.5, 0.75, 1))
+iris1 <- iris
+iris1$Sepal.Length.Cate <- cut(iris1$Sepal.Length, breaks = quantiles, labels = c("Q1", "Q2", "Q3", "Q4")
+aggregate(iris1[, 1:4], by = list(Species = iris1$Species, Sepal.Length.Cate = iris1$Sepal.Length.Cate), FUN = mean)
+aggregate(iris1[, 1:4], by = list(Species = iris1$Species, Sepal.Length.Cate = iris1$Sepal.Length.Cate), FUN = function(x) mean(x, na.rm = TRUE))-
+pivot_table <- table(iris1$Species, iris1$Sepal.Length.Cate)
+print(pivot_table)
