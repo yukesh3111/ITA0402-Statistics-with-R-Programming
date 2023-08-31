@@ -1,0 +1,7 @@
+library(reshape2)
+data(airquality)
+summary_stats <- summary(airquality)
+melted_data <- melt(airquality)
+melted_data_with_id <- melt(airquality, id.vars = c("Month", "Day"))
+casted_data <- dcast(melted_data_with_id, Month + Day ~ variable)
+average_per_month <- dcast(melted_data, Month ~ variable, mean)
